@@ -198,6 +198,7 @@ class Page extends TakeCare_Controller {
 
     function hapusobat($nio) {
         $this -> Model -> hapus_obat($nio);
+         $this -> session -> set_flashdata('message', 'Obat telah dihapus');
         redirect('Page/obat');
     }
 
@@ -225,6 +226,7 @@ class Page extends TakeCare_Controller {
                 'kategori' => $this -> input -> post('id_jenis', true),
                 'gambar' => $gambar
             ];
+            $this -> session -> set_flashdata('message', 'Obat telah ditambahkan');
             $this -> Model -> tambah_obat($input_data);
             redirect('Page/obat');
 
@@ -295,7 +297,7 @@ class Page extends TakeCare_Controller {
                 'foto' => $gambar
             );
             $this -> Model -> edit_dokter($nid, $data);
-
+             $this -> session -> set_flashdata('message', 'Dokter telah diedit');
             redirect('page/dokter');
         }
     }
@@ -331,7 +333,7 @@ class Page extends TakeCare_Controller {
             'gambar' =>$gambar
         );
         $this -> Model -> edit_obat($id_obat, $data);
-
+         $this -> session -> set_flashdata('message', 'Obat telah diedit');
         redirect('Page/obat');
 
     }
@@ -350,7 +352,7 @@ class Page extends TakeCare_Controller {
             'password' => $password
         );
         $this -> Model -> edit_profil($id_user, $data);
-         $this -> session -> set_flashdata('message', 'Profil sudah terupdate silahkan login ulang!');
+        $this -> session -> set_flashdata('message', 'Profil sudah terupdate silahkan login ulang!');
         redirect('Page/profil');
 
     }
