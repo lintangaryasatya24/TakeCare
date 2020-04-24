@@ -65,7 +65,7 @@ class Model extends CI_Model {
 	}
 	public function hapus_obat($nio)
 	{
-		return $this->db->delete('tbl_obat', ['id_produk' => $nio]);
+		return $this->db->delete('obat', ['id_produk' => $nio]);
 	}
 	public function edit_obat($nio,$data)
 	{
@@ -81,7 +81,7 @@ class Model extends CI_Model {
 	}
 	public function tambah_obat($data)
 	{
-		return $this->db->insert('tbl_obat', $data);
+		return $this->db->insert('obat', $data);
 	}
 	public function tambah_reservasi($data)
 	{

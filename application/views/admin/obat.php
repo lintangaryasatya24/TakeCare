@@ -61,7 +61,7 @@
                 </div>
                 <div class="modal-body">
                     
-                    <form method="post" action="<?php echo base_url('page/editobat/'); ?>">
+                    <form method="post" action="<?php echo base_url('page/editobat/'); ?> " enctype="multipart/form-data">
                         <input type="hidden" class="form-control" id="formGroupExampleInput" placeholder="Id Obat" name="id_obat" value="<?php echo$d['id_produk'];?>" required>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Nama Obat</label>

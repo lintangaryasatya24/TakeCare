@@ -267,6 +267,21 @@ class Page extends TakeCare_Controller {
     public
 
     function editobat() {
+        $initialize = $this->upload->initialize(array(
+                "upload_path" => './assets/obat/',
+                "allowed_types" => "gif|jpg|jpeg|png|bmp",
+                "remove_spaces" => TRUE
+                
+                
+            ));
+        $this->load->library('upload', $initialize);
+            if (!$this->upload->do_upload('foto')) {
+                $error = array('error' => $this->upload->display_errors());
+                $data['error_message'] = $this->upload->display_errors();
+                echo 'anda gagal upload';
+            } else {
+                $data = $this->upload->data();
+                $gambar = $data['file_name'];   
 
         $id_obat = $this -> input -> post('id_obat');
         $namaobat = $this -> input -> post('namaobat');
@@ -278,12 +293,14 @@ class Page extends TakeCare_Controller {
             'harga' => $harga,
             'deskripsi' => $deskripsi,
             'kategori' => $id_jenis,
+            'gambar' =>$gambar
         );
         $this -> Model -> edit_obat($id_obat, $data);
 
         redirect('Page/obat');
 
     }
+}
      function editprofil() {
 
         $id_user = $this -> input -> post('id');
