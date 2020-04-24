@@ -68,7 +68,8 @@ if($this->session->flashdata('message')){
                         </div>
                         <div class="modal-body">
                             <form method="post" action="<?php echo base_url('page/tambahreservasi'); ?>">
-                                <input type="hidden" class="form-control" id="formGroupExampleInput" placeholder="Subject" name="nid" value="<?php echo $d->id ?>" readonly>
+                                <input type="hidden" class="form-control" id="formGroupExampleInput" placeholder="" name="nid" value="<?php echo $d->id ?>" readonly>
+                                <input type="hidden" class="form-control" id="formGroupExampleInput" placeholder="" name="idpengirim" value=" <?php echo $this->session->userdata('id') ?>" readonly>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput">Email To:</label>
                                     <input type="text" class="form-control" name="nama" placeholder="nama" value="<?php echo $d->nama?>" readonly>

@@ -16,7 +16,7 @@
             <li><a href="<?php echo base_url('page/aboutus'); ?>">Tentang Kami</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?php echo base_url('page/keranjang'); ?>"><span class="glyphicon glyphicon-envelope"></span> Pesan Dokter</a></li>
+            <li><a href="<?php echo base_url();?>page/pesan/<?php echo $this->session->userdata('id')?>"><span class="glyphicon glyphicon-envelope"></span> Daftar Perjanjian</a></li>
             <li><a href="<?php echo base_url('page/keranjang'); ?>"><span class="glyphicon glyphicon-shopping-cart"></span> Keranjang Belanja</a></li>
             <li class="dropdown pull-right">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Halo, <?php echo $this->session->userdata('nama') ?>

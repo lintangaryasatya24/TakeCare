@@ -45,6 +45,13 @@ class Model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function Getpesan($nid){
+		$this->db->select('*');
+		$this->db->from('pesan');
+		$this->db->where('idpengirim',$nid);
+		$query = $this->db->get();
+		return $query->result();
+	}
 	public function hapus_dokter($id)
 	{
 		return $this->db->delete('user', ['id' => $id]);
@@ -52,6 +59,10 @@ class Model extends CI_Model {
 	public function hapus_reservasi($noreservasi)
 	{
 		return $this->db->delete('reservasi', ['noreservasi' => $noreservasi]);
+	}
+	public function hapus_pesan($nopesan)
+	{
+		return $this->db->delete('pesan', ['nopesan' => $nopesan]);
 	}
 	public function edit_dokter($nid,$data)
 	{
@@ -86,6 +97,10 @@ class Model extends CI_Model {
 	public function tambah_reservasi($data)
 	{
 		return $this->db->insert('reservasi', $data);
+	}
+	public function kirimpesan($data)
+	{
+		return $this->db->insert('pesan', $data);
 	}
 	public function check_username($username){
 		$condition = "username =" . "'" . $username . "'";

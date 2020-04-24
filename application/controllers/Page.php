@@ -154,6 +154,13 @@ class Page extends TakeCare_Controller {
     }
     public
 
+    function pesan($nid) {
+
+        $data_pesan = $this -> Model -> Getpesan($nid);
+        $this -> show_template('pesan', ['data' => $data_pesan]);
+    }
+    public
+
     function indexobat() {
         $dataproduk = $this -> Model -> get_produk_all();
         $datakategori = $this -> Model -> get_kategori_all();
@@ -166,15 +173,26 @@ class Page extends TakeCare_Controller {
 
     function hapusdokter($id) {
         $this -> Model -> hapus_dokter($id);
+        $this -> session -> set_flashdata('message', 'Dokter telah dihapus');
         redirect('Page/dokter');
     }
     public
 
-    function reservasii($nid, $noreservasi) {
+    function hapusreservasi($nid, $noreservasi) {
         $this -> Model -> hapus_reservasi($noreservasi);
         $data_reservasi = $this -> Model -> Getreservasi($nid);
-        $this -> show_template('reservasi', ['data' => $data_reservasi]);
+        $this -> session -> set_flashdata('message', 'Reservasi telah dihapus');
+        $this -> show_template('dokter/reservasi', ['data' => $data_reservasi]);
     }
+    public
+
+    function hapuspesan($nid, $nopesan) {
+        $this -> Model -> hapus_pesan($nopesan);
+        $data_pesan = $this -> Model -> Getpesan($nid);
+        $this -> session -> set_flashdata('message', 'Pesan telah dihapus');
+        $this -> show_template('pesan', ['data' => $data_pesan]);
+    }
+
 
     public
 
@@ -218,6 +236,7 @@ class Page extends TakeCare_Controller {
 
         $input_data = [
             'nid' => $this -> input -> post('nid', true),
+            'idpengirim' => $this -> input -> post('idpengirim', true),
             'nama' => $this -> input -> post('nama', true),
             'subjek' => $this -> input -> post('subjek', true),
             'pesan' => $this -> input -> post('pesan', true),
@@ -230,7 +249,23 @@ class Page extends TakeCare_Controller {
         redirect('Page/indexdokter');
 
     }
+     function kirimpesan($nid) {
 
+        $input_data = [
+            'idpengirim' => $this -> input -> post('idpengirim', true),
+            'untuk' => $this -> input -> post('nama', true),
+            'subjek' => $this -> input -> post('subjek', true),
+            'pesan' => $this -> input -> post('pesan', true),
+            'nama' => $this -> input -> post('pengirim', true),
+            'tanggal' => $this -> input -> post('tanggal', true),
+            'jam' => $this -> input -> post('jam', true)
+        ];
+        $this -> Model -> kirimpesan($input_data);
+        $this -> session -> set_flashdata('message', 'Pesan telah terkirim');
+        redirect('Page/reservasi/'.$nid);
+
+    }
+    
     public
 
     function editdokter() {
