@@ -26,6 +26,12 @@ class Model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function Getuser(){
+		$this->db->select('*');
+		$this->db->from('user');
+		$query = $this->db->get();
+		return $query->result();
+	}
 	public function Getspesialis_nid(){
 		$this->db->select('*');
 		$this->db->from('spesialis');
@@ -64,7 +70,13 @@ class Model extends CI_Model {
 	public function edit_obat($nio,$data)
 	{
 		$this->db->where('id_produk', $nio);	
-		$this->db->update('tbl_obat', $data);
+		$this->db->update('obat', $data);
+	    return;
+	}
+	public function edit_profil($nio,$data)
+	{
+		$this->db->where('id', $nio);	
+		$this->db->update('user', $data);
 	    return;
 	}
 	public function tambah_obat($data)

@@ -22,6 +22,7 @@
         <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="#"><b>Role: <?php echo $this->session->userdata('role') ?></b></a></li>
+                     <li><a href="<?php echo base_url('page/profil'); ?>"><b>Kelola Profil</b></a></li>
                     <?php
             if($this->session->userdata('role') == 'Dokter'){ 
                 ?>

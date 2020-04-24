@@ -1,5 +1,5 @@
 <div class="list-group">
-    <a href="<?php echo base_url()?>page/tampil_cart" class="list-group-item"><strong><i class="glyphicon glyphicon-shopping-cart"></i> KERANJANG BELANJA</strong></a>
+    <a href="<?php echo base_url()?>page/keranjang" class="list-group-item"><strong><i class="glyphicon glyphicon-shopping-cart"></i> KERANJANG BELANJA</strong></a>
     <?php 
 
         $cart= $this->cart->contents();

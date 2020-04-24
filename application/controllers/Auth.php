@@ -132,6 +132,7 @@ function login() {
                 'alamat' => $user -> alamat,
                 'nohp' => $user -> nohp,
                 'nid' => $user -> nid,
+                'password' => $user -> password,
                 'id' => $user -> id
             );
 

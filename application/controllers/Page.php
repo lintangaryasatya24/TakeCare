@@ -23,7 +23,7 @@ class Page extends TakeCare_Controller {
     $this -> show_template('aboutus');
 
 	}
-	  public
+	public
 
     function tambahkeranjang() {
         $data_produk = array('id' => $this -> input -> post('id'),
@@ -115,6 +115,14 @@ class Page extends TakeCare_Controller {
         $data_dokter = $this -> Model -> Getdokter_nid();
         $data_spesialis = $this -> Model -> Getspesialis_nid();
         $this -> show_template('admin/dokter', ['data' => $data_dokter, 'dataJ' => $data_spesialis]);
+    }
+
+    public
+
+    function profil() {
+
+        $data_user = $this -> Model -> Getuser();
+        $this -> show_template('profil', ['data' => $data_user]);
     }
     public
 
@@ -274,6 +282,24 @@ class Page extends TakeCare_Controller {
         $this -> Model -> edit_obat($id_obat, $data);
 
         redirect('Page/obat');
+
+    }
+     function editprofil() {
+
+        $id_user = $this -> input -> post('id');
+        $nama = $this -> input -> post('nama');
+        $alamat = $this -> input -> post('alamat');
+        $nohp = $this -> input -> post('nohp');
+        $password = $this -> input -> post('password');
+        $data = array(
+            'nama' => $nama,
+            'alamat' => $alamat,
+            'nohp' => $nohp,
+            'password' => $password
+        );
+        $this -> Model -> edit_profil($id_user, $data);
+         $this -> session -> set_flashdata('message', 'Profil sudah terupdate silahkan login ulang!');
+        redirect('Page/profil');
 
     }
   }
