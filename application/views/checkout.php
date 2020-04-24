@@ -87,7 +87,7 @@ $grand_total = $grand_total + $item['subtotal'];
                                     <td>
                                         <?php echo $i++; ?>
                                     </td>
-                                    <td><img class="img-responsive" src="<?php echo base_url() . 'assets/images/'.$item['gambar']; ?>" /></td>
+                                    <td><img class="img-responsive" src="<?php echo base_url() . 'assets/obat/'.$item['gambar']; ?>" /></td>
                                     <td>
                                         <?php echo $item['name']; ?>
                                     </td>
