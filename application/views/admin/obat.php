@@ -1,3 +1,8 @@
+ <?php
+if($this->session->flashdata('message')){ 
+  echo '<div class="alert alert-success">'.$this->session->flashdata('message').'</div>'; 
+}
+?>
   <div class="pull-right">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah">Tambah Obat</button>
 </div>
