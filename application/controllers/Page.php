@@ -169,7 +169,7 @@ class Page extends TakeCare_Controller {
 
     function hapuspesan(){
         $kobar=$this->input->post('kode');
-        $data=$this-> Model ->hapus_barang($kobar);
+        $data=$this-> Model ->hapus_pesan($kobar);
         echo json_encode($data);
     }
     public
