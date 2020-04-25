@@ -46,11 +46,12 @@ class Model extends CI_Model {
 		return $query->result();
 	}
 	public function Getpesan($nid){
-		$this->db->select('*');
-		$this->db->from('pesan');
-		$this->db->where('idpengirim',$nid);
-		$query = $this->db->get();
-		return $query->result();
+		$hasil=$this->db->query("SELECT * FROM pesan where idpengirim='$nid'");
+		return $hasil->result();
+	}
+	function hapus_pesan($kobar){
+		$hasil=$this->db->query("DELETE FROM pesan WHERE nopesan='$kobar'");
+		return $hasil;
 	}
 	public function hapus_dokter($id)
 	{
@@ -59,10 +60,6 @@ class Model extends CI_Model {
 	public function hapus_reservasi($noreservasi)
 	{
 		return $this->db->delete('reservasi', ['noreservasi' => $noreservasi]);
-	}
-	public function hapus_pesan($nopesan)
-	{
-		return $this->db->delete('pesan', ['nopesan' => $nopesan]);
 	}
 	public function edit_dokter($nid,$data)
 	{

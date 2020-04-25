@@ -156,8 +156,21 @@ class Page extends TakeCare_Controller {
 
     function pesan($nid) {
 
-        $data_pesan = $this -> Model -> Getpesan($nid);
-        $this -> show_template('pesan', ['data' => $data_pesan]);
+      
+        $this -> show_template('pesan');
+    }
+    public 
+
+    function datapesan($nid){
+        $data2=$this-> Model ->Getpesan($nid);
+        echo json_encode($data2);
+    }
+    public 
+
+    function hapuspesan(){
+        $kobar=$this->input->post('kode');
+        $data=$this-> Model ->hapus_barang($kobar);
+        echo json_encode($data);
     }
     public
 
@@ -184,16 +197,9 @@ class Page extends TakeCare_Controller {
         $this -> session -> set_flashdata('message', 'Reservasi telah dihapus');
         $this -> show_template('dokter/reservasi', ['data' => $data_reservasi]);
     }
-    public
+    
 
-    function hapuspesan($nid, $nopesan) {
-        $this -> Model -> hapus_pesan($nopesan);
-        $data_pesan = $this -> Model -> Getpesan($nid);
-        $this -> session -> set_flashdata('message', 'Pesan telah dihapus');
-        $this -> show_template('pesan', ['data' => $data_pesan]);
-    }
-
-
+  
     public
 
     function hapusobat($nio) {
@@ -251,7 +257,9 @@ class Page extends TakeCare_Controller {
         redirect('Page/indexdokter');
 
     }
-     function kirimpesan($nid) {
+    public 
+
+    function kirimpesan($nid) {
 
         $input_data = [
             'idpengirim' => $this -> input -> post('idpengirim', true),
